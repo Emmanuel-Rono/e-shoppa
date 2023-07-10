@@ -42,6 +42,7 @@ class SplashScreen : AppCompatActivity() {
         }
         val splas_screen=AnimationUtils.loadAnimation(this, R.anim.animation)
         binding.splashtext.animation=splas_screen
+        binding.ImgIcon.animation=splas_screen
         splas_screen.setAnimationListener(object : Animation.AnimationListener{
             override fun onAnimationStart(p0: Animation?) {
                 /*/TODO("Not yet implemented")*/
