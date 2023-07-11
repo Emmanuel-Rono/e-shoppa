@@ -1,6 +1,5 @@
 package com.emmanuel_rono.e_shoppa.Domain
 
-import com.emmanuel_rono.e_shoppa.Data.Login.Login
 import com.emmanuel_rono.e_shoppa.Data.Login.LoginResponse
 import retrofit2.Response
 import retrofit2.http.Body
@@ -9,6 +8,6 @@ import retrofit2.http.POST
 interface ApiInterface {
     //Login
     @POST("auth/login")
-    suspend fun loginTheUser(@Body login :Login): Response<LoginResponse>
+    suspend fun loginTheUser(@Body login: Result<LoginResponse>): Response<LoginResponse>
 
 }

@@ -5,20 +5,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.emmanuel_rono.e_shoppa.Data.Login.Login
+import com.emmanuel_rono.e_shoppa.Data.Login.LoginResponse
+import com.emmanuel_rono.e_shoppa.Data.Repository.userRepository
+import com.emmanuel_rono.e_shoppa.Data.ViewModel.loginViewModel
+import com.emmanuel_rono.e_shoppa.Domain.APiClient.apiService
 import com.emmanuel_rono.e_shoppa.Utils.validateDetails
+import com.emmanuel_rono.e_shoppa.Utils.Result
 import com.emmanuel_rono.e_shoppa.databinding.FragmentLoginBinding
+import kotlin.math.log
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
+
 class fragmentLogin : Fragment() {
+    lateinit var viewModel:loginViewModel
 
     private var _binding: FragmentLoginBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,6 +45,13 @@ if (userDetails.valid)
 {
     _binding!!.loginProgress.visibility=View.VISIBLE
     _binding!!.loginButton.isEnabled=false
+
+val repository=userRepository(apiService)
+    viewModel=ViewModelProvider(this).get(loginViewModel::class.java)
+    viewModel._loginResult.observe(this) { result ->{
+        if ()
+    }
+
 
 }
         }
