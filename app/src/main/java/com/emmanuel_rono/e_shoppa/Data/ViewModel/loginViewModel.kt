@@ -1,9 +1,6 @@
 package com.emmanuel_rono.e_shoppa.Data.ViewModel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.emmanuel_rono.e_shoppa.Data.Login.Login
 import com.emmanuel_rono.e_shoppa.Data.Login.LoginResponse
 import com.emmanuel_rono.e_shoppa.Data.Repository.UserRepository
@@ -22,6 +19,15 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
             _loginResult.value = response
         }
     }
+    class LoginViewModelFactory(private val userRepository: UserRepository) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
+                return LoginViewModel(userRepository) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
+        }
+    }
+
 }
 
 

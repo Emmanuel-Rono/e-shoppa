@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.emmanuel_rono.e_shoppa.Data.Repository.UserRepository
@@ -43,16 +44,16 @@ class fragmentLogin : Fragment() {
             if (userDetails.valid) {
                 _binding!!.loginProgress.visibility = View.VISIBLE
                 _binding!!.loginButton.isEnabled = false
-
                 val userRepository = UserRepository(apiService)
-                viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
-
+                val viewModelFactory = LoginViewModel.LoginViewModelFactory(userRepository)
+                viewModel = ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
                 viewModel.loginResult.observe(this) { response ->
                     if (response.isSuccessful) {
                         val loginResponse = response.body()
                         if (loginResponse != null) {
                             val token = loginResponse.token
                             // Login successful, navigate to the next screen
+                            Toast.makeText(context, "Success",Toast.LENGTH_LONG).show()
                             findNavController().navigate(R.id.SecondFragment)
                         }
                     } else {
