@@ -2,14 +2,14 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/LoginFragment">
+    android:id="@+id/nav_graph2"
+    app:startDestination="@id/FirstFragment">
 
     <fragment
-        android:id="@+id/LoginFragment"
-        android:name="com.emmanuel_rono.e_shoppa.Presentation.fragmentLogin"
+        android:id="@+id/FirstFragment"
+        android:name="com.emmanuel_rono.e_shoppa.Presentation.Activities.FirstFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_login">
+        tools:layout="@layout/fragment_first">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
@@ -17,12 +17,12 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.emmanuel_rono.e_shoppa.Presentation.profileFragment"
+        android:name="com.emmanuel_rono.e_shoppa.Presentation.Activities.FragmentCart"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_profile">
+        tools:layout="@layout/fragment_cart">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/LoginFragment" />
+            app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>
