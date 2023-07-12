@@ -47,15 +47,17 @@ class fragmentLogin : Fragment() {
                 val userRepository = UserRepository(apiService)
                 val viewModelFactory = LoginViewModel.LoginViewModelFactory(userRepository)
                 viewModel = ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
+                viewModel.login(username,password)
                 viewModel.loginResult.observe(this) { response ->
                     if (response.isSuccessful) {
                         val loginResponse = response.body()
                         if (loginResponse != null) {
                             val token = loginResponse.token
                             // Login successful, navigate to the next screen
-                            Toast.makeText(context, "Success",Toast.LENGTH_LONG).show()
-                            findNavController().navigate(R.id.SecondFragment)
-                        }
+                            Toast.makeText(requireContext(), "Success",Toast.LENGTH_LONG).show()
+                            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+
+                            }
                     } else {
                         val errorBody = response.errorBody()
                         // Handle login error
