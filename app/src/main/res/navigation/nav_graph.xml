@@ -2,27 +2,37 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph2"
-    app:startDestination="@id/FirstFragment">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentLogin">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.emmanuel_rono.e_shoppa.Presentation.Activities.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/FragmentCart"
         android:name="com.emmanuel_rono.e_shoppa.Presentation.Activities.FragmentCart"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_cart">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            app:destination="@id/fragmentLogin" />
+        <action
+            android:id="@+id/action_FragmentCart_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentLogin"
+        android:name="com.emmanuel_rono.e_shoppa.Presentation.fragmentLogin"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.emmanuel_rono.e_shoppa.Presentation.Fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
+        <action
+            android:id="@+id/action_homeFragment_to_FragmentCart"
+            app:destination="@id/FragmentCart" />
     </fragment>
 </navigation>
