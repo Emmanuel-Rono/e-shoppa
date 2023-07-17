@@ -13,7 +13,7 @@ import com.emmanuel_rono.e_shoppa.Data.ViewModel.LoginViewModel
 import com.emmanuel_rono.e_shoppa.Domain.APiClient.apiService
 import com.emmanuel_rono.e_shoppa.R
 import com.emmanuel_rono.e_shoppa.Utils.validateDetails
-import com.emmanuel_rono.e_shoppa.Utils.Result
+
 import com.emmanuel_rono.e_shoppa.databinding.FragmentLoginBinding
 
 
@@ -56,7 +56,6 @@ class fragmentLogin : Fragment() {
                             // Login successful, navigate to the next screen
                             Toast.makeText(requireContext(), "Success",Toast.LENGTH_LONG).show()
                             findNavController().navigate(R.id.homeFragment)
-
                             }
                     } else {
                         val errorBody = response.errorBody()

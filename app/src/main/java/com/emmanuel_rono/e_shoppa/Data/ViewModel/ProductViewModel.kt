@@ -1,12 +1,14 @@
 package com.emmanuel_rono.e_shoppa.Data.ViewModel
 
+import ProductRepository
 import androidx.lifecycle.*
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.Products
-import com.emmanuel_rono.e_shoppa.Data.Repository.ProductRepository
+
 import com.emmanuel_rono.e_shoppa.Domain.APiClient
 import kotlinx.coroutines.launch
+import java.lang.ProcessBuilder.Redirect.to
 
-class ProductViewModel(private val repository: ProductRepository) :ViewModel(){
+class ProductViewModel(private val repository:ProductRepository) :ViewModel(){
     private val _Products = MutableLiveData<List<Products>>()
     val  products: LiveData<List<Products>> get() = _Products
  fun getProducts()
@@ -14,7 +16,7 @@ class ProductViewModel(private val repository: ProductRepository) :ViewModel(){
      val apiService=APiClient.apiService
      viewModelScope.launch{
          try{
-             val fetchedProducts=repository.getProducts()
+             val fetchedProducts = repository.getProducts()
              _Products.value=fetchedProducts
          }
          catch (e:Exception){

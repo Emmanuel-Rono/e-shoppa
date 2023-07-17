@@ -1,6 +1,5 @@
 package com.emmanuel_rono.e_shoppa.Presentation.Adapters
 
-import android.icu.text.Transliterator.Position
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
