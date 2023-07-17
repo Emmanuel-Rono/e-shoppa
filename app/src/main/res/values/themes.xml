@@ -29,4 +29,9 @@
     <style name="Theme.EShoppa.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.EShoppa.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="choiceChip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/green</item>
+        <item name="android:textColor">@color/green</item>
+    </style>
+
 </resources>

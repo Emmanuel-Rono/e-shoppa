@@ -55,7 +55,7 @@ class fragmentLogin : Fragment() {
                             val token = loginResponse.token
                             // Login successful, navigate to the next screen
                             Toast.makeText(requireContext(), "Success",Toast.LENGTH_LONG).show()
-                            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+                            findNavController().navigate(R.id.homeFragment)
 
                             }
                     } else {
