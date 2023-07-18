@@ -1,16 +1,16 @@
 package com.emmanuel_rono.e_shoppa.Data.ViewModel
 
-import ProductRepository
+import com.emmanuel_rono.e_shoppa.Data.Repository.ProductRepository
 import androidx.lifecycle.*
-import com.emmanuel_rono.e_shoppa.Data.AllProducts.Products
+import com.emmanuel_rono.e_shoppa.Data.AllProducts.ProductEntity
+
 
 import com.emmanuel_rono.e_shoppa.Domain.APiClient
 import kotlinx.coroutines.launch
-import java.lang.ProcessBuilder.Redirect.to
 
-class ProductViewModel(private val repository:ProductRepository) :ViewModel(){
-    private val _Products = MutableLiveData<List<Products>>()
-    val  products: LiveData<List<Products>> get() = _Products
+class ProductViewModel(private val repository: ProductRepository) :ViewModel(){
+    private val _Products = MutableLiveData<List<ProductEntity>>()
+    val  products: MutableLiveData<List<ProductEntity>> get() = _Products
  fun getProducts()
  {
      val apiService=APiClient.apiService

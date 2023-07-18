@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.emmanuel_rono.e_shoppa.Data.AllProducts.ProductEntity
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.Products
 import com.emmanuel_rono.e_shoppa.databinding.ProductBinding
 
-class ProductAdapter (var products:List<Products>):RecyclerView.Adapter<ProductAdapter.ViewHolder>(){
+class ProductAdapter (var products:List<ProductEntity>):RecyclerView.Adapter<ProductAdapter.ViewHolder>(){
 
     inner class ViewHolder(private val binding:ProductBinding):RecyclerView.ViewHolder(binding.root)
     {

@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.emmanuel_rono.e_shoppa.Data.Database.AppDatabase
 import com.emmanuel_rono.e_shoppa.Data.Repository.ProductRepository
 import com.emmanuel_rono.e_shoppa.Data.ViewModel.ProductViewModel
 import com.emmanuel_rono.e_shoppa.Domain.APiClient
@@ -21,23 +22,24 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter: ProductAdapter
     private lateinit var viewModel: ProductViewModel
-    lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater.inflate(R.layout.fragment_home, container, false)
-        binding = FragmentHomeBinding.bind(rootView)
-        return rootView
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
+
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter= ProductAdapter(emptyList())
+        adapter = ProductAdapter(emptyList())
         recyclerView = binding.homeRecyclerView
-        recyclerView.adapter=adapter
-        recyclerView.layoutManager=GridLayoutManager(requireContext(),2)
-        //val products = getProductsFromApi() //
-        val userRepository = ProductRepository(APiClient.apiService)
-        val viewModelFactory = ProductViewModel.ProductViewModelFactory(userRepository)
+        recyclerView.adapter = adapter
+        val appDatabase = AppDatabase.getInstance(requireContext())
+        val productDao = appDatabase.productDao()
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        val productRepository = ProductRepository(APiClient.apiService, productDao =productDao )
+        val viewModelFactory = ProductViewModel.ProductViewModelFactory(productRepository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(ProductViewModel::class.java)
 
         viewModel.products.observe(viewLifecycleOwner, Observer { products ->
@@ -48,5 +50,3 @@ class HomeFragment : Fragment() {
         viewModel.getProducts()
     }
 }
-
-
