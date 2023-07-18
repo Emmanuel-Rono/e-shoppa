@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.emmanuel_rono.e_shoppa.Data.Database.AppDatabase
-import com.emmanuel_rono.e_shoppa.Data.Repository.ProductRepository
-import com.emmanuel_rono.e_shoppa.Data.ViewModel.ProductViewModel
+import com.emmanuel_rono.e_shoppa.Domain.Repository.ProductRepository
+import com.emmanuel_rono.e_shoppa.Presentation.ViewModel.ProductViewModel
 import com.emmanuel_rono.e_shoppa.Domain.APiClient
 import com.emmanuel_rono.e_shoppa.Presentation.Adapters.ProductAdapter
 import com.emmanuel_rono.e_shoppa.R

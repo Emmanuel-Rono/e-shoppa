@@ -1,4 +1,4 @@
-package com.emmanuel_rono.e_shoppa.Data.Repository
+package com.emmanuel_rono.e_shoppa.Domain.Repository
 
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.ProductEntity
 

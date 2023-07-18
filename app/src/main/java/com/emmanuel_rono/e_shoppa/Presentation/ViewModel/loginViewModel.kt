@@ -1,9 +1,9 @@
-package com.emmanuel_rono.e_shoppa.Data.ViewModel
+package com.emmanuel_rono.e_shoppa.Presentation.ViewModel
 
 import androidx.lifecycle.*
 import com.emmanuel_rono.e_shoppa.Data.Login.Login
 import com.emmanuel_rono.e_shoppa.Data.Login.LoginResponse
-import com.emmanuel_rono.e_shoppa.Data.Repository.UserRepository
+import com.emmanuel_rono.e_shoppa.Domain.Repository.UserRepository
 
 import kotlinx.coroutines.launch
 import retrofit2.Response

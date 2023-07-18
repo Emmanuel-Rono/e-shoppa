@@ -1,6 +1,6 @@
-package com.emmanuel_rono.e_shoppa.Data.ViewModel
+package com.emmanuel_rono.e_shoppa.Presentation.ViewModel
 
-import com.emmanuel_rono.e_shoppa.Data.Repository.ProductRepository
+import com.emmanuel_rono.e_shoppa.Domain.Repository.ProductRepository
 import androidx.lifecycle.*
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.ProductEntity
 
