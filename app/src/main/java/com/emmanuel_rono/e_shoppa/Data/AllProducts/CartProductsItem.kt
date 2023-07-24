@@ -6,10 +6,10 @@ import androidx.room.PrimaryKey
 data class CartProductsItem(
     val date: String,
     val id: Int,
-    val products: List<Product>,
+    val products: List<Products>,
     val userId: Int
 ) {
-    //Create Mapping
+//Create Mapping
 //Cartpro..Entity-Is not receiving remote data
 //Map from cart..items
 
@@ -17,11 +17,10 @@ data class CartProductsItem(
         return CartProductsItemEntity(date,id,products,userId)
     }
 }
-
 @Entity(tableName = "cardItemTable")
 data class CartProductsItemEntity(
     val date: String,
     @PrimaryKey val id: Int,
-    val products: List<Product>,
+    val products: List<Products>,
     val userId: Int
 )

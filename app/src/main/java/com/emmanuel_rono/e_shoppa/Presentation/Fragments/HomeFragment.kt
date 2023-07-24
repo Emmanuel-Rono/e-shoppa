@@ -28,7 +28,6 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,13 +39,12 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         val productRepository = ProductRepository(APiClient.apiService, productDao =productDao )
         val viewModelFactory = ProductViewModel.ProductViewModelFactory(productRepository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(ProductViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory)[ProductViewModel::class.java]
 
         viewModel.products.observe(viewLifecycleOwner, Observer { products ->
             adapter.products = products
             adapter.notifyDataSetChanged()
         })
-
         viewModel.getProducts()
     }
 }
