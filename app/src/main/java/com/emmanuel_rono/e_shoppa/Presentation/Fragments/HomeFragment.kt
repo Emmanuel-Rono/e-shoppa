@@ -2,20 +2,19 @@ package com.emmanuel_rono.e_shoppa.Presentation.Fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.emmanuel_rono.e_shoppa.Data.Database.AppDatabase
-import com.emmanuel_rono.e_shoppa.Domain.Repository.ProductRepository
-import com.emmanuel_rono.e_shoppa.Presentation.ViewModel.ProductViewModel
 import com.emmanuel_rono.e_shoppa.Domain.APiClient
+import com.emmanuel_rono.e_shoppa.Domain.Repository.ProductRepository
 import com.emmanuel_rono.e_shoppa.Presentation.Adapters.ProductAdapter
-import com.emmanuel_rono.e_shoppa.R
+import com.emmanuel_rono.e_shoppa.Presentation.ViewModel.ProductViewModel
 import com.emmanuel_rono.e_shoppa.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {

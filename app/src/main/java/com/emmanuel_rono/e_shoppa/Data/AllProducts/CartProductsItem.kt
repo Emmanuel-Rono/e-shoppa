@@ -8,19 +8,4 @@ data class CartProductsItem(
     val id: Int,
     val products: List<Products>,
     val userId: Int
-) {
-//Create Mapping
-//Cartpro..Entity-Is not receiving remote data
-//Map from cart..items
-
-    fun toCartproductsEnity(): CartProductsItemEntity {
-        return CartProductsItemEntity(date,id,products,userId)
-    }
-}
-@Entity(tableName = "cardItemTable")
-data class CartProductsItemEntity(
-    val date: String,
-    @PrimaryKey val id: Int,
-    val products: List<Products>,
-    val userId: Int
 )

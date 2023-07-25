@@ -26,7 +26,7 @@ val reviews=binding.itemReview
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
        val product=products[position]
-        holder.price.text=product.price
+        holder.price.text= product.price.toString()
         Glide.with(holder.itemView)
             .load(product.image)
             .into(holder.image)

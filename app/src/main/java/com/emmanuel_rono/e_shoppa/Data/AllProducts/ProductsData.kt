@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
     val description: String,
   val id: Int,
     val image: String,
-    val price: String,
+    val price: Double,
     val title: String
 )
 {
@@ -21,7 +21,7 @@ import androidx.room.PrimaryKey
 data class ProductEntity(
     @PrimaryKey val id: Int,
     val title: String,
-    val price: String,
+    val price: Double,
     val image: String
 
 )

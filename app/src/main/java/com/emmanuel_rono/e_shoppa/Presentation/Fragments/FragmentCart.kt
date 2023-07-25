@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.ProductEntity
-import com.emmanuel_rono.e_shoppa.Data.Database.AppDatabase
 
 import com.emmanuel_rono.e_shoppa.Domain.APiClient
 import com.emmanuel_rono.e_shoppa.Domain.Repository.CartProductRepository
@@ -33,13 +32,12 @@ class FragmentCart : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView=binding.cartRecyclerView
         setupRecyclerView()
-        val appDatabase = AppDatabase.getInstance(requireContext())
-        val cartDao = appDatabase.cartDao()
-        val cartProductRepository = CartProductRepository(APiClient.apiService, cartDao)
+        val cartProductRepository = CartProductRepository(APiClient.apiService)
       //  val viewModelFactory = (cartProductRepository)
         val viewModelFactory =
             cartViewModel.CartProductViewModelProviderFactory(cartProductRepository)
-        viewModel = ViewModelProvider(this)[cartViewModel::class.java]
+        viewModel = ViewModelProvider(this, viewModelFactory)[cartViewModel::class.java]
+
         setupObservers()
         viewModel.getItems()
     }
@@ -59,9 +57,9 @@ class FragmentCart : Fragment() {
                         // Create a new product and add it to the list
                         val productEntity = ProductEntity(
                             id = product.id,
-                            price = product.price,
+                            price = product.price ?: 0.0,
                             image = product.image,
-                            title = product.title
+                            title = product.title ?: "No Title Available" // Use a default value if title is null
                         )
                         productDetailsList.add(productEntity)
                     }
