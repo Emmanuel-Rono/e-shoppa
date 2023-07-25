@@ -10,6 +10,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.ProductEntity
+import com.emmanuel_rono.e_shoppa.Data.Database.AppDatabase
+
+import com.emmanuel_rono.e_shoppa.Domain.APiClient
+import com.emmanuel_rono.e_shoppa.Domain.Repository.CartProductRepository
+
 import com.emmanuel_rono.e_shoppa.Presentation.Adapters.cartItemAdapter
 import com.emmanuel_rono.e_shoppa.Presentation.ViewModel.cartViewModel
 import com.emmanuel_rono.e_shoppa.databinding.FragmentCartBinding
@@ -24,12 +29,17 @@ class FragmentCart : Fragment() {
                               savedInstanceState: Bundle?): View {
          binding = FragmentCartBinding.inflate(inflater, container, false)
         return binding.root }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView=binding.cartRecyclerView
-        viewModel = ViewModelProvider(this)[cartViewModel::class.java]
         setupRecyclerView()
+        val appDatabase = AppDatabase.getInstance(requireContext())
+        val cartDao = appDatabase.cartDao()
+        val cartProductRepository = CartProductRepository(APiClient.apiService, cartDao)
+      //  val viewModelFactory = (cartProductRepository)
+        val viewModelFactory =
+            cartViewModel.CartProductViewModelProviderFactory(cartProductRepository)
+        viewModel = ViewModelProvider(this)[cartViewModel::class.java]
         setupObservers()
         viewModel.getItems()
     }

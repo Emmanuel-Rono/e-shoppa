@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FragmentCart"
-        android:name="com.emmanuel_rono.e_shoppa.Presentation.Activities.FragmentCart"
+        android:name="com.emmanuel_rono.e_shoppa.Presentation.Fragments.FragmentCart"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_cart">
 

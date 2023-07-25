@@ -13,9 +13,7 @@ import kotlinx.coroutines.launch
 class cartViewModel(val repository:CartProductRepository) : ViewModel()
 {
 
-
     val products: MutableLiveData<List<CartProductsItemEntity>> = MutableLiveData()
-
     val _cartItem= MutableLiveData<List<CartProductsItemEntity>>()
     val cartItem:LiveData<List<CartProductsItemEntity>> get() = _cartItem
     fun getItems()
@@ -29,7 +27,7 @@ class cartViewModel(val repository:CartProductRepository) : ViewModel()
             catch (e:Exception){e.printStackTrace()}
         }
     }
-}
+
 class CartProductViewModelProviderFactory(private val repository: CartProductRepository):ViewModelProvider.Factory{
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(cartViewModel::class.java)) {
@@ -37,4 +35,4 @@ class CartProductViewModelProviderFactory(private val repository: CartProductRep
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
-}
+}}
