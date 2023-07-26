@@ -14,4 +14,5 @@ interface  productDao {
     suspend fun  getAllProducts(): List<ProductEntity>
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun InsertProduct(products: List<ProductEntity>)
+
 }
