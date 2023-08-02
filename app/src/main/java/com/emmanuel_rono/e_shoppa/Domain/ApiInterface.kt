@@ -1,6 +1,6 @@
 package com.emmanuel_rono.e_shoppa.Domain
 
-import com.emmanuel_rono.e_shoppa.Data.AllProducts.CartProductsItem
+
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.Products
 import com.emmanuel_rono.e_shoppa.Data.Login.Login
 import com.emmanuel_rono.e_shoppa.Data.Login.LoginResponse
@@ -15,7 +15,5 @@ interface ApiInterface {
     suspend fun loginTheUser(@Body login: Login): Response<LoginResponse>
     @GET("/products")
     suspend fun getAllProducts(): List<Products>
-    @GET("/carts")
-    suspend fun getCartItems():List<CartProductsItem>
 
 }

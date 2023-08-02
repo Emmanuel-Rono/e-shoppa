@@ -2,6 +2,7 @@ package com.emmanuel_rono.e_shoppa.Presentation.ViewModel
 
 import com.emmanuel_rono.e_shoppa.Domain.Repository.ProductRepository
 import androidx.lifecycle.*
+import com.emmanuel_rono.e_shoppa.Data.AllProducts.CartEntity
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.ProductEntity
 
 
@@ -23,6 +24,11 @@ class ProductViewModel(private val repository: ProductRepository) :ViewModel(){
              e.printStackTrace()
      }}
  }
+    fun insertProduct(product: ProductEntity) {
+        viewModelScope.launch {
+            repository.insertProduct(product)
+        }
+    }
     class ProductViewModelFactory(private val repository: ProductRepository) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(ProductViewModel::class.java)) {
