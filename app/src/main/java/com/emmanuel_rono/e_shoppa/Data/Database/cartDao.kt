@@ -11,7 +11,7 @@ import com.emmanuel_rono.e_shoppa.Data.AllProducts.ProductEntity
 interface cartDao
 {
     @Query("SELECT * FROM CartProductTable LIMIT 1")
-    fun getSelectedProduct(): List<CartEntity>
+    suspend fun getSelectedProduct(): List<CartEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
         suspend fun Insertproduct(product: ProductEntity)

@@ -6,22 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import com.emmanuel_rono.e_shoppa.Data.AllProducts.ProductEntity
 import com.emmanuel_rono.e_shoppa.Data.Database.AppDatabase
-import com.emmanuel_rono.e_shoppa.Data.Database.productDao
-import com.emmanuel_rono.e_shoppa.Domain.APiClient
-import com.emmanuel_rono.e_shoppa.Domain.Repository.ProductRepository
 import com.emmanuel_rono.e_shoppa.Domain.Repository.cartRepository
-import com.emmanuel_rono.e_shoppa.Presentation.Adapters.ProductAdapter
 import com.emmanuel_rono.e_shoppa.Presentation.Adapters.cartItemAdapter
-import com.emmanuel_rono.e_shoppa.Presentation.ViewModel.ProductViewModel
 import com.emmanuel_rono.e_shoppa.Presentation.ViewModel.cartViewModel
-
 import com.emmanuel_rono.e_shoppa.databinding.FragmentCartBinding
-class CartFragment : Fragment() {
+
+class FragmentCart : Fragment() {
     private lateinit var binding: FragmentCartBinding
     private lateinit var viewmodel: cartViewModel
     private lateinit var thecartItemAdapter: cartItemAdapter

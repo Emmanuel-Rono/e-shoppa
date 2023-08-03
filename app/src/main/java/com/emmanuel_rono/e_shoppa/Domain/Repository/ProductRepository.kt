@@ -1,12 +1,10 @@
 package com.emmanuel_rono.e_shoppa.Domain.Repository
 
-import androidx.lifecycle.LiveData
-import com.emmanuel_rono.e_shoppa.Data.AllProducts.CartEntity
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.ProductEntity
 import com.emmanuel_rono.e_shoppa.Data.Database.cartDao
 
 import com.emmanuel_rono.e_shoppa.Data.Database.productDao
-import com.emmanuel_rono.e_shoppa.Domain.ApiInterface
+import com.emmanuel_rono.e_shoppa.Domain.Inerface.ApiInterface
 
 class ProductRepository(private val api: ApiInterface, private val productDao:productDao, private val cartDao:cartDao) {
     suspend fun getProducts(): List<ProductEntity> {
