@@ -15,11 +15,9 @@ class cartViewModel(private var repository: cartRepository):ViewModel()
 {
     var _cartItem= MutableLiveData<List<CartEntity>>()
     val CartItem:MutableLiveData<List<CartEntity>> get() =  _cartItem
-
     init {
         getCartItem()
     }
-
 fun getCartItem() {
     viewModelScope.launch {
         var item = repository.getCartItem()
@@ -28,7 +26,6 @@ fun getCartItem() {
         }
     }
 }
-
     class cartviewmodelFactory(private val repository: cartRepository) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(cartViewModel::class.java)) {

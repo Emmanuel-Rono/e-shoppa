@@ -13,12 +13,11 @@ class profileViewodel(private var repository: profileRepository): ViewModel() {
 
      val userProfile:MutableLiveData<List<profileBio>> get() = _userProfile
 
-    suspend fun getUserProfile()
-    {
+    suspend fun getUserProfile(): List<profileBio> {
         //actual call
        val user=repository.getProfileData()
         userProfile.value=user
-
+return user
     }
 
     class profilewmodelFactory(private val repository: profileRepository) : ViewModelProvider.Factory {
@@ -30,3 +29,4 @@ class profileViewodel(private var repository: profileRepository): ViewModel() {
         }
     }
 }
+

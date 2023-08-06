@@ -39,11 +39,12 @@ class profile_fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //observe the results
+
         scope.launch {
             viewodel.getUserProfile()
             viewodel.userProfile.observe(viewLifecycleOwner) { result ->
                 if (result.isNotEmpty()) {
-                    binding.profileEmail.text = result[0].email.toString() // for example
+                    binding.profileEmail.text = result[0].email // for example
                     binding.profileName.text = result[0].name.toString()// for example
 
                 }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.ProductEntity
 import com.emmanuel_rono.e_shoppa.Data.Database.AppDatabase
@@ -14,6 +15,7 @@ import com.emmanuel_rono.e_shoppa.Domain.APiClient
 import com.emmanuel_rono.e_shoppa.Domain.Repository.ProductRepository
 import com.emmanuel_rono.e_shoppa.Presentation.Adapters.ProductAdapter
 import com.emmanuel_rono.e_shoppa.Presentation.ViewModel.ProductViewModel
+import com.emmanuel_rono.e_shoppa.R
 import com.emmanuel_rono.e_shoppa.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -30,6 +32,8 @@ class HomeFragment : Fragment() {
         val appDatabase = AppDatabase.getInstance(requireContext())
         val productDao = appDatabase.productDao()
         val cartDao = appDatabase.cartDao()
+        val profileFragment=profile_fragment()
+
         val productRepository = ProductRepository(
             APiClient.apiService, productDao = productDao,
             cartDao = cartDao
@@ -52,5 +56,18 @@ class HomeFragment : Fragment() {
             theAdapter.notifyDataSetChanged()
         }
         viewModel.getProducts()
+
+
+        val ProfileSection=binding.homeProfile
+        ProfileSection.setOnClickListener()
+        {
+            findNavController().navigate(R.id.profileFragment)
+        }
+        val cartFragment=binding.homeCart
+        cartFragment.setOnClickListener()
+        {
+            findNavController().navigate(R.id.FragmentCart)
+        }
     }
+
 }

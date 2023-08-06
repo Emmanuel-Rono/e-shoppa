@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/profileFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/FragmentCart"
@@ -40,6 +40,15 @@
             app:destination="@id/fragmentLogin" />
         <action
             android:id="@+id/action_homeFragment_to_FragmentCart"
+            app:destination="@id/FragmentCart" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment2"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_FragmentCart2"
             app:destination="@id/FragmentCart" />
     </fragment>
     <fragment
