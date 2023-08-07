@@ -41,7 +41,7 @@ class HomeFragment : Fragment() {
         // Initialize adapter here with click listener
       theAdapter= ProductAdapter(listOf(), object : ProductAdapter.OnItemClickListener {
             override fun onItemClick(product: ProductEntity) {
-                viewModel.insertProduct(product)
+                viewModel.insertProduct(product.toCartEntity())
             }
       })
         binding.homeRecyclerView.apply {

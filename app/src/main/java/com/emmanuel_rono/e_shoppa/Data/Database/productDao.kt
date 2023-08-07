@@ -12,6 +12,7 @@ import com.emmanuel_rono.e_shoppa.Data.AllProducts.Products
 interface  productDao {
     @Query("Select * From products")
     suspend fun  getAllProducts(): List<ProductEntity>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun InsertProduct(products: List<ProductEntity>)
 

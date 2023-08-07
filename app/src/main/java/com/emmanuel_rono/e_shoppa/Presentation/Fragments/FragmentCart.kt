@@ -5,13 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.emmanuel_rono.e_shoppa.Data.Database.AppDatabase
 import com.emmanuel_rono.e_shoppa.Domain.Repository.cartRepository
 import com.emmanuel_rono.e_shoppa.Presentation.Adapters.cartItemAdapter
 import com.emmanuel_rono.e_shoppa.Presentation.ViewModel.cartViewModel
+import com.emmanuel_rono.e_shoppa.R
 import com.emmanuel_rono.e_shoppa.databinding.FragmentCartBinding
 
 class FragmentCart : Fragment() {
@@ -35,7 +38,7 @@ class FragmentCart : Fragment() {
         val viewModelFactory = cartViewModel.cartviewmodelFactory(productRepository)
         viewmodel = ViewModelProvider(this, viewModelFactory)[cartViewModel::class.java]
         binding.cartRecyclerView.apply {
-            layoutManager = GridLayoutManager(requireContext(), 2)
+            layoutManager = GridLayoutManager(requireContext(), 1)
             thecartItemAdapter = cartItemAdapter(mutableListOf())
             adapter =thecartItemAdapter
         }
@@ -44,6 +47,11 @@ class FragmentCart : Fragment() {
             thecartItemAdapter.notifyDataSetChanged()
         }
         viewmodel.getCartItem()
+        binding.cartBack.setOnClickListener() {findNavController().navigate(R.id.homeFragment)}
+
+        binding.cartClearAll.setOnClickListener() { Toast.makeText(context, "Coming Soon", Toast.LENGTH_SHORT).show()}
+
+        binding.cartCheckout.setOnClickListener() { Toast.makeText(context, "Coming Soon", Toast.LENGTH_SHORT).show()}
     }
 
 }

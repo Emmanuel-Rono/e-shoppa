@@ -24,7 +24,7 @@ class ProductViewModel(private val repository: ProductRepository) :ViewModel(){
              e.printStackTrace()
      }}
  }
-    fun insertProduct(product: ProductEntity) {
+    fun insertProduct(product: CartEntity) {
         viewModelScope.launch {
             repository.insertProduct(product)
         }

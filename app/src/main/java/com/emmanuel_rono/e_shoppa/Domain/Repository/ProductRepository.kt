@@ -1,5 +1,6 @@
 package com.emmanuel_rono.e_shoppa.Domain.Repository
 
+import com.emmanuel_rono.e_shoppa.Data.AllProducts.CartEntity
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.ProductEntity
 import com.emmanuel_rono.e_shoppa.Data.Database.cartDao
 
@@ -22,7 +23,8 @@ class ProductRepository(private val api: ApiInterface, private val productDao:pr
             }
         }
     //val selectedProduct: LiveData<CartEntity> =cartDao.getSelectedProduct()
-    suspend fun insertProduct(product: ProductEntity) {
+    suspend fun insertProduct(product: CartEntity) {
+
         cartDao.Insertproduct(product)
     }
         }

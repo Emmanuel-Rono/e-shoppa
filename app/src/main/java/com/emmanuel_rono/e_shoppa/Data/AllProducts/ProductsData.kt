@@ -16,9 +16,7 @@ import androidx.room.PrimaryKey
    fun toProductEntity():ProductEntity{
         return ProductEntity(id,title,price,image)
     }
-    fun toCartEntity():CartEntity{
-        return CartEntity(id,title,price,image)
-    }
+
 }
 @Entity(tableName = "products")
 data class ProductEntity(
@@ -27,6 +25,12 @@ data class ProductEntity(
     val price: Double,
     val image: String
 )
+{
+    fun toCartEntity():CartEntity{
+        return CartEntity(id,title,price,image)
+}
+
+}
 @Entity(tableName ="CartProductTable")
 data class CartEntity(
     @PrimaryKey val id: Int,
