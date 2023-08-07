@@ -32,8 +32,6 @@ class HomeFragment : Fragment() {
         val appDatabase = AppDatabase.getInstance(requireContext())
         val productDao = appDatabase.productDao()
         val cartDao = appDatabase.cartDao()
-        val profileFragment=profile_fragment()
-
         val productRepository = ProductRepository(
             APiClient.apiService, productDao = productDao,
             cartDao = cartDao
@@ -50,14 +48,11 @@ class HomeFragment : Fragment() {
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = theAdapter
         }
-
         viewModel.products.observe(viewLifecycleOwner) { products ->
             theAdapter.products = products
             theAdapter.notifyDataSetChanged()
         }
         viewModel.getProducts()
-
-
         val ProfileSection=binding.homeProfile
         ProfileSection.setOnClickListener()
         {
@@ -69,5 +64,4 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.FragmentCart)
         }
     }
-
 }

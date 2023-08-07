@@ -18,5 +18,5 @@ interface ApiInterface {
     suspend fun getAllProducts(): List<Products>
 
     @GET("/users/1")
-    suspend fun getUserProf():List<profileBio>
+    suspend fun getUserProf():profileBio
 }

@@ -20,7 +20,7 @@ class cartViewModel(private var repository: cartRepository):ViewModel()
     }
 fun getCartItem() {
     viewModelScope.launch {
-        var item = repository.getCartItem()
+        val item = repository.getCartItem()
         withContext(Dispatchers.Main) {
             CartItem.value = item
         }

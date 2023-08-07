@@ -53,7 +53,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.emmanuel_rono.e_shoppa.Presentation.profileFragment"
+        android:name="com.emmanuel_rono.e_shoppa.Presentation.Fragments.profile_fragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
