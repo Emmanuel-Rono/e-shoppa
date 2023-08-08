@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.CartEntity
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.ProductEntity
-@Database(entities = [ProductEntity::class,CartEntity::class ],version = 2)
+@Database(entities = [ProductEntity::class,CartEntity::class ],version = 3)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun productDao(): productDao
     abstract fun cartDao(): cartDao

@@ -51,11 +51,14 @@ class FragmentCart : Fragment() {
                 }
             },object : cartItemAdapter.OnPlusClickListener {
                 override fun onPlusClick(product: CartEntity) {
-                    Toast.makeText(context, "Coming soon",Toast.LENGTH_SHORT).show()
                 }
+                override fun increaseQuantity(id: Int, quantity: Int) {
+                    viewmodel.updateQuantity(id, quantity)}
             },object : cartItemAdapter.OnMinusClickListener {
                 override fun onMinusClick(product: CartEntity) {
-                    Toast.makeText(context, "Coming soon", Toast.LENGTH_SHORT).show()
+                }
+                override fun reduceQuantity(id: Int, quantity: Int) {
+                    viewmodel.updateQuantity(id, quantity)
                 }
             })
         binding.cartRecyclerView.apply {
@@ -70,7 +73,6 @@ class FragmentCart : Fragment() {
         binding.cartBack.setOnClickListener() {findNavController().navigate(R.id.homeFragment)}
         binding.cartClearAll.setOnClickListener() {viewmodel.deleteItemsAll()}
         binding.cartCheckout.setOnClickListener() { Toast.makeText(context, "Coming Soon", Toast.LENGTH_SHORT).show()}
-
 
 }}
 

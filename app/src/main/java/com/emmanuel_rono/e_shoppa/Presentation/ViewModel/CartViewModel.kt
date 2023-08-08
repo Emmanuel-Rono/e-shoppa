@@ -40,6 +40,11 @@ fun getCartItem() {
             fetchCartItems()
         }
     }
+    fun updateQuantity(id: Int, quantity: Int) {
+        viewModelScope.launch {
+            repository.updateQuantity(id, quantity)
+            fetchCartItems()
+        }}
 
 
 

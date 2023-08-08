@@ -13,4 +13,7 @@ class cartRepository(var dao: cartDao) {
     suspend fun deleteProduct(productId:Int) {
         return dao.deleteProduct(productId)
     }
+    suspend fun updateQuantity(id: Int, quantity: Int) {
+        dao.updateQuantity(id, quantity)
+    }
 }

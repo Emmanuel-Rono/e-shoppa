@@ -1,5 +1,6 @@
 package com.emmanuel_rono.e_shoppa.Presentation.Adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -9,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.CartEntity
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.ProductEntity
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.Products
+import com.emmanuel_rono.e_shoppa.Presentation.ViewModel.cartViewModel
 import com.emmanuel_rono.e_shoppa.R
 
 import com.emmanuel_rono.e_shoppa.databinding.ItemBinding
@@ -20,6 +22,8 @@ class cartItemAdapter(
     private val plusListener: OnPlusClickListener,
     private val minusListener: OnMinusClickListener
 ) : RecyclerView.Adapter<cartItemAdapter.viewHolder>() {
+
+
     interface OnItemClickListener {
         fun onItemClick(product: CartEntity)
     }
@@ -30,11 +34,14 @@ class cartItemAdapter(
 
     interface OnPlusClickListener {
         fun onPlusClick(product: CartEntity)
+        fun increaseQuantity(id: Int, quantity: Int)
     }
 
     interface OnMinusClickListener {
         fun onMinusClick(product: CartEntity)
+        fun reduceQuantity(id:Int,quantity: Int)
     }
+    @SuppressLint("NotifyDataSetChanged")
     fun updateList(newList: List<CartEntity>) {
         list.clear()
         list.addAll(newList)
@@ -45,6 +52,7 @@ class cartItemAdapter(
         val Itemimage = binding.cartItemImage
         val Itemname = binding.cartItemName
         val ItemPrice = binding.cartItemPrice
+        val itemQuantity = binding.cartItemQuantity
 
         init {
             itemView.setOnClickListener {
@@ -63,14 +71,23 @@ class cartItemAdapter(
             itemView.findViewById<ImageView>(R.id.cart_item_plus).setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
+                    val ItemAmt=list[position]
+                    ItemAmt.quantity++
+                    binding.cartItemQuantity.text = ItemAmt.quantity.toString()
                     plusListener.onPlusClick(list[position])
+                    plusListener.increaseQuantity(ItemAmt.id,ItemAmt.quantity)
                 }
             }
 
             itemView.findViewById<ImageView>(R.id.cart_item_minus).setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
+                    val itemAmount=list[position]
+
+                    itemAmount.quantity--
+                    binding.cartItemQuantity.text=itemAmount.quantity.toString()
                     minusListener.onMinusClick(list[position])
+                    minusListener.reduceQuantity(itemAmount.id,itemAmount.quantity)
                 }
             }
         }
@@ -86,6 +103,7 @@ class cartItemAdapter(
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
         val item = list[position]
         holder.Itemname.text = item.title
+        holder.itemQuantity.text=item.quantity.toString()
         holder.ItemPrice.text = item.price.toString()
         Glide.with(holder.Itemimage)
             .load(item.image)
