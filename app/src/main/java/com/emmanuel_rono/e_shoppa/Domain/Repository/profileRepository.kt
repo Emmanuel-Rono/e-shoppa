@@ -1,15 +1,17 @@
 package com.emmanuel_rono.e_shoppa.Domain.Repository
 
-import android.provider.ContactsContract.Profile
-import androidx.lifecycle.LiveData
-import com.emmanuel_rono.e_shoppa.Data.AllProducts.profileBio
 import com.emmanuel_rono.e_shoppa.Domain.Inerface.ApiInterface
-import okhttp3.Call
+import com.emmanuel_rono.e_shoppa.Utils.ProfileBioResult
+
 
 class profileRepository(val api:ApiInterface)
 {
-     suspend fun getProfileData(): profileBio {
-        return api.getUserProf()
+    suspend fun getProfileData(): ProfileBioResult {
+        return try {
+            val profileBio = api.getUserProf()
+            ProfileBioResult.Success(profileBio)
+        } catch (e: Exception) {
+            ProfileBioResult.Error(e)
+        }
     }
-
 }

@@ -26,6 +26,23 @@ fun getCartItem() {
         }
     }
 }
+    fun deleteItemsAll() {
+        viewModelScope.launch {
+         repository.deleteAll()
+            fetchCartItems()
+        }
+    }
+
+        fun deleteItem(productId:Int)
+    {
+        viewModelScope.launch {
+            repository.deleteProduct(productId)
+            fetchCartItems()
+        }
+    }
+
+
+
     class cartviewmodelFactory(private val repository: cartRepository) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(cartViewModel::class.java)) {
@@ -33,4 +50,11 @@ fun getCartItem() {
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }
-    }}
+    }
+
+    fun fetchCartItems() {
+        viewModelScope.launch {
+            _cartItem.postValue(repository.getCartItem())
+        }
+    }
+}

@@ -10,8 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.emmanuel_rono.e_shoppa.Data.AllProducts.CartEntity
+import com.emmanuel_rono.e_shoppa.Data.AllProducts.ProductEntity
 import com.emmanuel_rono.e_shoppa.Data.Database.AppDatabase
 import com.emmanuel_rono.e_shoppa.Domain.Repository.cartRepository
+import com.emmanuel_rono.e_shoppa.Presentation.Adapters.ProductAdapter
 import com.emmanuel_rono.e_shoppa.Presentation.Adapters.cartItemAdapter
 import com.emmanuel_rono.e_shoppa.Presentation.ViewModel.cartViewModel
 import com.emmanuel_rono.e_shoppa.R
@@ -37,22 +40,37 @@ class FragmentCart : Fragment() {
         val productRepository = cartRepository (  dao = cartDao)
         val viewModelFactory = cartViewModel.cartviewmodelFactory(productRepository)
         viewmodel = ViewModelProvider(this, viewModelFactory)[cartViewModel::class.java]
+
+            thecartItemAdapter = cartItemAdapter(mutableListOf(),object : cartItemAdapter.OnItemClickListener {
+                override fun onItemClick(product: CartEntity) {
+                   Toast.makeText(context,"Coming soon",Toast.LENGTH_SHORT).show()
+                }
+        },object : cartItemAdapter.OnDeleteClickListener {
+                override fun onDeleteClick(product: CartEntity) {
+                    viewmodel.deleteItem(product.id)
+                }
+            },object : cartItemAdapter.OnPlusClickListener {
+                override fun onPlusClick(product: CartEntity) {
+                    Toast.makeText(context, "Coming soon",Toast.LENGTH_SHORT).show()
+                }
+            },object : cartItemAdapter.OnMinusClickListener {
+                override fun onMinusClick(product: CartEntity) {
+                    Toast.makeText(context, "Coming soon", Toast.LENGTH_SHORT).show()
+                }
+            })
         binding.cartRecyclerView.apply {
+            adapter = thecartItemAdapter
             layoutManager = GridLayoutManager(requireContext(), 1)
-            thecartItemAdapter = cartItemAdapter(mutableListOf())
-            adapter =thecartItemAdapter
         }
         viewmodel.CartItem.observe(viewLifecycleOwner) { products ->
-            thecartItemAdapter.catItem = products
-            thecartItemAdapter.notifyDataSetChanged()
+            thecartItemAdapter.updateList(products)
         }
         viewmodel.getCartItem()
+        viewmodel.fetchCartItems()
         binding.cartBack.setOnClickListener() {findNavController().navigate(R.id.homeFragment)}
-
-        binding.cartClearAll.setOnClickListener() { Toast.makeText(context, "Coming Soon", Toast.LENGTH_SHORT).show()}
-
+        binding.cartClearAll.setOnClickListener() {viewmodel.deleteItemsAll()}
         binding.cartCheckout.setOnClickListener() { Toast.makeText(context, "Coming Soon", Toast.LENGTH_SHORT).show()}
-    }
 
-}
+
+}}
 

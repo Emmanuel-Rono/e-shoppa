@@ -15,4 +15,10 @@ interface cartDao
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
         suspend fun Insertproduct(product: com.emmanuel_rono.e_shoppa.Data.AllProducts.CartEntity)
+
+    @Query("Delete FROM CartProductTable" )
+    suspend fun DeleteAll()
+
+    @Query("Delete from CartProductTable where id = :productId ")
+    suspend fun deleteProduct(productId:Int)
 }

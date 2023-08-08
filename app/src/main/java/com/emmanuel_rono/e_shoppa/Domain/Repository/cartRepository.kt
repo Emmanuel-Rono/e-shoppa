@@ -7,4 +7,10 @@ class cartRepository(var dao: cartDao) {
     suspend fun getCartItem(): List<CartEntity> {
         return dao.getSelectedProduct()
     }
+    suspend fun deleteAll() {
+        return dao.DeleteAll()
+    }
+    suspend fun deleteProduct(productId:Int) {
+        return dao.deleteProduct(productId)
+    }
 }

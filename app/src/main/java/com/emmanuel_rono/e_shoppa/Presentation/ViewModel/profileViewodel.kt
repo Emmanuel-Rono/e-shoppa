@@ -8,18 +8,21 @@ import androidx.lifecycle.viewModelScope
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.profileBio
 import com.emmanuel_rono.e_shoppa.Domain.Repository.ProductRepository
 import com.emmanuel_rono.e_shoppa.Domain.Repository.profileRepository
+import com.emmanuel_rono.e_shoppa.Utils.ProfileBioResult
 import kotlinx.coroutines.launch
 
 class profileViewodel(private var repository: profileRepository): ViewModel() {
 
-    var _userProfile = MutableLiveData<profileBio>()
-     val userProfile:LiveData<profileBio> get() = _userProfile
+    var _userProfile = MutableLiveData<ProfileBioResult>()
+     val userProfile:LiveData<ProfileBioResult> get() = _userProfile
 
     fun getUserProfile(){
         //actual call
         viewModelScope.launch {
             val user=repository.getProfileData()
             _userProfile.value=user
+
+            _userProfile.value=ProfileBioResult.Loading
         }
     }
     class profilewmodelFactory(private val repository: profileRepository) : ViewModelProvider.Factory {

@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.emmanuel_rono.e_shoppa.Domain.APiClient
 import com.emmanuel_rono.e_shoppa.Domain.Repository.profileRepository
-import com.emmanuel_rono.e_shoppa.Presentation.ViewModel.ProductViewModel
 import com.emmanuel_rono.e_shoppa.Presentation.ViewModel.profileViewodel
+import com.emmanuel_rono.e_shoppa.R
+import com.emmanuel_rono.e_shoppa.Utils.ProfileBioResult
 import com.emmanuel_rono.e_shoppa.databinding.FragmentProfileBinding
 
 class profile_fragment : Fragment() {
@@ -32,14 +34,25 @@ class profile_fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //observe the results
-
         viewodel.userProfile.observe(viewLifecycleOwner) { result ->
-                  val user = result
-                    binding.profileEmail.text =  user.email // for example
-                    binding.profileName.text = "${user.name.firstname} ${user.name.lastname}"
+         when(result) {
+             is ProfileBioResult.Loading
+             -> {
+                // binding.loadingProgress.visibility=View.VISIBLE
+                Toast.makeText(context, "Loading..", Toast.LENGTH_LONG).show()
+             }
 
+            is ProfileBioResult.Success -> {
+                //binding.loadingProgress.visibility=View.INVISIBLE
+                val user=result.profileBio
+                binding.profileEmail.text = user.email // for example
+                binding.profileName.text = "${user.name.firstname} ${user.name.lastname}"
 
             }
+            else -> {
+                Toast.makeText(context,"No connection",Toast.LENGTH_SHORT).show()
+            }
+            }}
 
         viewodel.getUserProfile()
 
@@ -59,6 +72,8 @@ class profile_fragment : Fragment() {
         privacy.setOnClickListener() { Toast.makeText(context,"Check back Soon",Toast.LENGTH_SHORT).show() }
         report.setOnClickListener() { Toast.makeText(context,"Check back Soon",Toast.LENGTH_SHORT).show() }
         Logout.setOnClickListener() { Toast.makeText(context,"Check back Soon",Toast.LENGTH_SHORT).show() }
-    }
+        binding.profileBack.setOnClickListener() { findNavController().navigate(R.id.homeFragment)}
 
-}
+
+
+    }}
