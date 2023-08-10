@@ -1,4 +1,4 @@
-package com.emmanuel_rono.e_shoppa.Presentation.Fragments
+package com.emmanuel_rono.e_shoppa.Domain.Repository.Fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.emmanuel_rono.e_shoppa.Domain.APiClient
@@ -53,7 +54,7 @@ class profile_fragment : Fragment() {
                 Toast.makeText(context,"No connection",Toast.LENGTH_SHORT).show()
             }
             }}
-
+        viewodel.userProfile
         viewodel.getUserProfile()
 
         //Setting Onclick Listeners for the other components of Profile Fragment
@@ -64,7 +65,6 @@ class profile_fragment : Fragment() {
         val privacy=binding.profilePrivacy
         val report=binding.profileReportBug
         val Logout=binding.profileLogout
-
 
         notifications.setOnClickListener() { Toast.makeText(context,"Check back Soon",Toast.LENGTH_SHORT).show() }
         wishList.setOnClickListener() { Toast.makeText(context,"Check back Soon",Toast.LENGTH_SHORT).show() }
