@@ -1,4 +1,4 @@
-package com.emmanuel_rono.e_shoppa.Domain.Repository.Fragments
+package com.emmanuel_rono.e_shoppa.Presentation.Fragments
 
 import android.annotation.SuppressLint
 import android.app.Dialog

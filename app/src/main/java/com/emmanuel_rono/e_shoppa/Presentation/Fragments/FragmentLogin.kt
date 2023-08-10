@@ -16,7 +16,6 @@ import com.emmanuel_rono.e_shoppa.Utils.validateDetails
 
 import com.emmanuel_rono.e_shoppa.databinding.FragmentLoginBinding
 
-
 class fragmentLogin : Fragment() {
     lateinit var viewModel: LoginViewModel
     private var _binding: FragmentLoginBinding? = null
@@ -58,7 +57,6 @@ class fragmentLogin : Fragment() {
                         // Handle login error
                     }
                 }
-
             }
         }
     }

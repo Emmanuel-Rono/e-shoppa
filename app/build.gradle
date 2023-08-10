@@ -59,6 +59,9 @@ dependencies {
     // Optional - Kotlin extensions for Room
     implementation "androidx.room:room-ktx:2.5.2"
 
+        implementation 'com.saadahmedev.popup-dialog:popup-dialog:1.0.3'
+     
+
 
 }
 

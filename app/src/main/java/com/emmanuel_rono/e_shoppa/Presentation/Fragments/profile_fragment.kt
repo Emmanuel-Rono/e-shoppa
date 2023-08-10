@@ -1,4 +1,4 @@
-package com.emmanuel_rono.e_shoppa.Domain.Repository.Fragments
+package com.emmanuel_rono.e_shoppa.Presentation.Fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -18,7 +18,7 @@ import com.emmanuel_rono.e_shoppa.Utils.ProfileBioResult
 import com.emmanuel_rono.e_shoppa.databinding.FragmentProfileBinding
 
 class profile_fragment : Fragment() {
-    lateinit var binding: FragmentProfileBinding
+    lateinit var binding:FragmentProfileBinding
     lateinit var viewodel: profileViewodel
 
     override fun onCreateView(
@@ -48,7 +48,6 @@ class profile_fragment : Fragment() {
                 val user=result.profileBio
                 binding.profileEmail.text = user.email // for example
                 binding.profileName.text = "${user.name.firstname} ${user.name.lastname}"
-
             }
             else -> {
                 Toast.makeText(context,"No connection",Toast.LENGTH_SHORT).show()
@@ -58,7 +57,7 @@ class profile_fragment : Fragment() {
         viewodel.getUserProfile()
 
         //Setting Onclick Listeners for the other components of Profile Fragment
-        binding.profileEdit.setOnClickListener { Toast.makeText(context,"Check back Soon",Toast.LENGTH_SHORT).show() }
+        binding.profileEdit.setOnClickListener { findNavController().navigate(R.id.profileEdit) }
         val notifications=binding.profileNotifications
         val wishList=binding.profileWishlist
         val termsofuse=binding.profileTerms

@@ -7,9 +7,7 @@ import com.emmanuel_rono.e_shoppa.Data.Login.Login
 import com.emmanuel_rono.e_shoppa.Data.Login.LoginResponse
 import com.emmanuel_rono.e_shoppa.Utils.ProfileBioResult
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiInterface {
     //Login
@@ -20,4 +18,12 @@ interface ApiInterface {
 
     @GET("/users/1")
     suspend fun getUserProf():profileBio
+
+    @PUT("users/{id}")
+    suspend fun updateUser(
+        @Path("id") userId: Int,
+        @Body user: profileBio
+        ): Response<profileBio>
+
+
 }

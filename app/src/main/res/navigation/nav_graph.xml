@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/fragmentLogin">
 
     <fragment
         android:id="@+id/FragmentCart"
@@ -50,6 +50,9 @@
         <action
             android:id="@+id/action_homeFragment_to_FragmentCart2"
             app:destination="@id/FragmentCart" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileEdit"
+            app:destination="@id/profileEdit" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -65,5 +68,14 @@
         <action
             android:id="@+id/action_profileFragment_to_FragmentCart"
             app:destination="@id/FragmentCart" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileEdit"
+        android:name="com.emmanuel_rono.e_shoppa.Presentation.Fragments.profileEdit"
+        android:label="fragment_profile_edit"
+        tools:layout="@layout/fragment_profile_edit" >
+        <action
+            android:id="@+id/action_profileEdit_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>
