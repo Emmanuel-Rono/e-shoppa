@@ -1,4 +1,4 @@
-package com.emmanuel_rono.e_shoppa.Presentation.ViewModel
+package com.emmanuel_rono.e_shoppa.presentation.viewModel
 
 import com.emmanuel_rono.e_shoppa.Domain.Repository.ProductRepository
 import androidx.lifecycle.*

@@ -1,4 +1,4 @@
-package com.emmanuel_rono.e_shoppa.Utils
+package com.emmanuel_rono.e_shoppa.utils
 
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.profileBio
 

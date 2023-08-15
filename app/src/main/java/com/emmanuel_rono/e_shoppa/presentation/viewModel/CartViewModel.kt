@@ -1,4 +1,4 @@
-package com.emmanuel_rono.e_shoppa.Presentation.ViewModel
+package com.emmanuel_rono.e_shoppa.presentation.viewModel
 
 
 import androidx.lifecycle.MutableLiveData
@@ -11,18 +11,19 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class cartViewModel(private var repository: cartRepository):ViewModel()
+class CartViewModel(private var repository: cartRepository):ViewModel()
 {
-    var _cartItem= MutableLiveData<List<CartEntity>>()
-    val CartItem:MutableLiveData<List<CartEntity>> get() =  _cartItem
+    private var _cartItem= MutableLiveData<List<CartEntity>>()
+    private val cartItem:MutableLiveData<List<CartEntity>> get() =  _cartItem
     init {
         getCartItem()
+
     }
 fun getCartItem() {
     viewModelScope.launch {
         val item = repository.getCartItem()
         withContext(Dispatchers.Main) {
-            CartItem.value = item
+            cartItem.value = item
         }
     }
 }
@@ -48,10 +49,10 @@ fun getCartItem() {
 
 
 
-    class cartviewmodelFactory(private val repository: cartRepository) : ViewModelProvider.Factory {
+    class CartViewmodelFactory(private val repository: cartRepository) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(cartViewModel::class.java)) {
-                return cartViewModel(repository) as T
+            if (modelClass.isAssignableFrom(CartViewModel::class.java)) {
+                return CartViewModel(repository) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }

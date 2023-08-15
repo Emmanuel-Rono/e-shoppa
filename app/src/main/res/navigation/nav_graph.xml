@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentLogin">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/FragmentCart"
-        android:name="com.emmanuel_rono.e_shoppa.Presentation.Fragments.FragmentCart"
+        android:name="com.emmanuel_rono.e_shoppa.presentation.fragments.FragmentCart"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_cart">
 
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentLogin"
-        android:name="com.emmanuel_rono.e_shoppa.Presentation.fragmentLogin"
+        android:name="com.emmanuel_rono.e_shoppa.presentation.fragmentLogin"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.emmanuel_rono.e_shoppa.Presentation.Fragments.HomeFragment"
+        android:name="com.emmanuel_rono.e_shoppa.presentation.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -56,7 +56,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.emmanuel_rono.e_shoppa.Presentation.Fragments.profile_fragment"
+        android:name="com.emmanuel_rono.e_shoppa.presentation.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -71,7 +71,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileEdit"
-        android:name="com.emmanuel_rono.e_shoppa.Presentation.Fragments.profileEdit"
+        android:name="com.emmanuel_rono.e_shoppa.presentation.fragments.ProfileEdit"
         android:label="fragment_profile_edit"
         tools:layout="@layout/fragment_profile_edit" >
         <action

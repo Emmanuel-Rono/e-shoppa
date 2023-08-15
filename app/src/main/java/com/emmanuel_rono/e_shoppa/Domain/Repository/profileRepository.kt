@@ -2,7 +2,7 @@ package com.emmanuel_rono.e_shoppa.Domain.Repository
 
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.profileBio
 import com.emmanuel_rono.e_shoppa.Domain.Inerface.ApiInterface
-import com.emmanuel_rono.e_shoppa.Utils.ProfileBioResult
+import com.emmanuel_rono.e_shoppa.utils.ProfileBioResult
 
 
 class profileRepository(val api:ApiInterface) {

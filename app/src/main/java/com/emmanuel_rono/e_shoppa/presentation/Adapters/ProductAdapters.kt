@@ -1,4 +1,4 @@
-package com.emmanuel_rono.e_shoppa.Presentation.Adapters
+package com.emmanuel_rono.e_shoppa.presentation.Adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

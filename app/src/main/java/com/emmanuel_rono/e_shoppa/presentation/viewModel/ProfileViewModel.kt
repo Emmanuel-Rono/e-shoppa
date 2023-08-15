@@ -1,4 +1,4 @@
-package com.emmanuel_rono.e_shoppa.Presentation.ViewModel
+package com.emmanuel_rono.e_shoppa.presentation.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,10 +7,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.profileBio
 import com.emmanuel_rono.e_shoppa.Domain.Repository.profileRepository
-import com.emmanuel_rono.e_shoppa.Utils.ProfileBioResult
+import com.emmanuel_rono.e_shoppa.utils.ProfileBioResult
 import kotlinx.coroutines.launch
 
-class profileViewodel(private var repository: profileRepository): ViewModel() {
+class ProfileViewModel(private var repository: profileRepository): ViewModel() {
 
     var _userProfile = MutableLiveData<ProfileBioResult>()
      val userProfile:LiveData<ProfileBioResult> get() = _userProfile
@@ -25,7 +25,7 @@ class profileViewodel(private var repository: profileRepository): ViewModel() {
         }
     }
 
-        fun Updateprofile(userId: Int, user: profileBio)
+        fun updateprofile(userId: Int, user: profileBio)
         {
 
 
@@ -38,10 +38,10 @@ class profileViewodel(private var repository: profileRepository): ViewModel() {
             }
 
 
-    class profilewmodelFactory(private val repository: profileRepository) : ViewModelProvider.Factory {
+    class ProfileViewModelFactory(private val repository: profileRepository) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(profileViewodel::class.java)) {
-                return profileViewodel(repository) as T
+            if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
+                return ProfileViewModel(repository) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }

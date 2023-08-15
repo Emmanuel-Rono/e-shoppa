@@ -1,7 +1,6 @@
-package com.emmanuel_rono.e_shoppa.Presentation.ViewModel
+package com.emmanuel_rono.e_shoppa.presentation.viewModel
 
 import androidx.lifecycle.*
-import com.emmanuel_rono.e_shoppa.Data.Login.Login
 import com.emmanuel_rono.e_shoppa.Data.Login.LoginResponse
 import com.emmanuel_rono.e_shoppa.Domain.Repository.UserRepository
 

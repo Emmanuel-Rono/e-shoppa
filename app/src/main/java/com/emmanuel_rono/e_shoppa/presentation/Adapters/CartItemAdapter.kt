@@ -1,4 +1,4 @@
-package com.emmanuel_rono.e_shoppa.Presentation.Adapters
+package com.emmanuel_rono.e_shoppa.presentation.Adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -8,20 +8,17 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.CartEntity
-import com.emmanuel_rono.e_shoppa.Data.AllProducts.ProductEntity
-import com.emmanuel_rono.e_shoppa.Data.AllProducts.Products
-import com.emmanuel_rono.e_shoppa.Presentation.ViewModel.cartViewModel
 import com.emmanuel_rono.e_shoppa.R
 
 import com.emmanuel_rono.e_shoppa.databinding.ItemBinding
 
-class cartItemAdapter(
+class CartItemAdapter(
     var list: MutableList<CartEntity>,
     private val clickListener: OnItemClickListener,
     private val deleteListener: OnDeleteClickListener,
     private val plusListener: OnPlusClickListener,
     private val minusListener: OnMinusClickListener
-) : RecyclerView.Adapter<cartItemAdapter.viewHolder>() {
+) : RecyclerView.Adapter<CartItemAdapter.ViewHolder>() {
 
 
     interface OnItemClickListener {
@@ -48,10 +45,10 @@ class cartItemAdapter(
         notifyDataSetChanged() // Notify the RecyclerView to update
     }
 
-    inner class viewHolder(private val binding: ItemBinding, private val deleteListener: OnDeleteClickListener, private val plusListener: OnPlusClickListener, private val minusListener: OnMinusClickListener) : RecyclerView.ViewHolder(binding.root) {
-        val Itemimage = binding.cartItemImage
-        val Itemname = binding.cartItemName
-        val ItemPrice = binding.cartItemPrice
+    inner class ViewHolder(private val binding: ItemBinding, private val deleteListener: OnDeleteClickListener, private val plusListener: OnPlusClickListener, private val minusListener: OnMinusClickListener) : RecyclerView.ViewHolder(binding.root) {
+        val itemimage = binding.cartItemImage
+        val itemname = binding.cartItemName
+        val itemPrice = binding.cartItemPrice
         val itemQuantity = binding.cartItemQuantity
 
         init {
@@ -71,11 +68,11 @@ class cartItemAdapter(
             itemView.findViewById<ImageView>(R.id.cart_item_plus).setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    val ItemAmt=list[position]
-                    ItemAmt.quantity++
-                    binding.cartItemQuantity.text = ItemAmt.quantity.toString()
+                    val itemAmt=list[position]
+                    itemAmt.quantity++
+                    binding.cartItemQuantity.text = itemAmt.quantity.toString()
                     plusListener.onPlusClick(list[position])
-                    plusListener.increaseQuantity(ItemAmt.id,ItemAmt.quantity)
+                    plusListener.increaseQuantity(itemAmt.id,itemAmt.quantity)
                 }
             }
 
@@ -94,20 +91,20 @@ class cartItemAdapter(
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): cartItemAdapter.viewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartItemAdapter.ViewHolder {
         val inflator = LayoutInflater.from(parent.context)
         val binding = ItemBinding.inflate(inflator, parent, false)
-        return viewHolder(binding, deleteListener, plusListener, minusListener)
+        return ViewHolder(binding, deleteListener, plusListener, minusListener)
     }
 
-    override fun onBindViewHolder(holder: viewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = list[position]
-        holder.Itemname.text = item.title
+        holder.itemname.text = item.title
         holder.itemQuantity.text=item.quantity.toString()
-        holder.ItemPrice.text = item.price.toString()
-        Glide.with(holder.Itemimage)
+        holder.itemPrice.text = item.price.toString()
+        Glide.with(holder.itemimage)
             .load(item.image)
-            .into(holder.Itemimage)
+            .into(holder.itemimage)
     }
 
 

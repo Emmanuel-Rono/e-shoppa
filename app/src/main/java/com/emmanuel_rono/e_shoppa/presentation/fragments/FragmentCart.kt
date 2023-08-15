@@ -1,4 +1,4 @@
-package com.emmanuel_rono.e_shoppa.Presentation.Fragments
+package com.emmanuel_rono.e_shoppa.presentation.fragments
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.CartEntity
 import com.emmanuel_rono.e_shoppa.Data.Database.AppDatabase
 import com.emmanuel_rono.e_shoppa.Domain.Repository.cartRepository
-import com.emmanuel_rono.e_shoppa.Presentation.Adapters.cartItemAdapter
-import com.emmanuel_rono.e_shoppa.Presentation.ViewModel.cartViewModel
+import com.emmanuel_rono.e_shoppa.presentation.Adapters.CartItemAdapter
+import com.emmanuel_rono.e_shoppa.presentation.viewModel.CartViewModel
 import com.emmanuel_rono.e_shoppa.R
 import com.emmanuel_rono.e_shoppa.databinding.FragmentCartBinding
 import com.saadahmedsoft.popupdialog.PopupDialog
@@ -25,13 +25,13 @@ import com.saadahmedsoft.popupdialog.listener.OnDialogButtonClickListener
 
 class FragmentCart : Fragment() {
     private lateinit var binding: FragmentCartBinding
-    private lateinit var viewmodel: cartViewModel
-    private lateinit var thecartItemAdapter: cartItemAdapter
+    private lateinit var viewmodel: CartViewModel
+    private lateinit var thecartItemAdapter: CartItemAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCartBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -41,23 +41,23 @@ class FragmentCart : Fragment() {
         val appDatabase = AppDatabase.getInstance(requireContext())
         val cartDao = appDatabase.cartDao()
         val productRepository = cartRepository (  dao = cartDao)
-        val viewModelFactory = cartViewModel.cartviewmodelFactory(productRepository)
-        viewmodel = ViewModelProvider(this, viewModelFactory)[cartViewModel::class.java]
+        val viewModelFactory = CartViewModel.CartViewmodelFactory(productRepository)
+        viewmodel = ViewModelProvider(this, viewModelFactory)[CartViewModel::class.java]
 
-            thecartItemAdapter = cartItemAdapter(mutableListOf(),object : cartItemAdapter.OnItemClickListener {
+            thecartItemAdapter = CartItemAdapter(mutableListOf(),object : CartItemAdapter.OnItemClickListener {
                 override fun onItemClick(product: CartEntity) {
                    Toast.makeText(context,"Coming soon",Toast.LENGTH_SHORT).show()
                 }
-        },object : cartItemAdapter.OnDeleteClickListener {
+        },object : CartItemAdapter.OnDeleteClickListener {
                 override fun onDeleteClick(product: CartEntity) {
                     viewmodel.deleteItem(product.id)
                 }
-            },object : cartItemAdapter.OnPlusClickListener {
+            },object : CartItemAdapter.OnPlusClickListener {
                 override fun onPlusClick(product: CartEntity) {
                 }
                 override fun increaseQuantity(id: Int, quantity: Int) {
                     viewmodel.updateQuantity(id, quantity)}
-            },object : cartItemAdapter.OnMinusClickListener {
+            },object : CartItemAdapter.OnMinusClickListener {
                 override fun onMinusClick(product: CartEntity) {
                 }
                 override fun reduceQuantity(id: Int, quantity: Int) {
@@ -74,11 +74,11 @@ class FragmentCart : Fragment() {
 
         viewmodel.getCartItem()
         viewmodel.fetchCartItems()
-        binding.cartBack.setOnClickListener() {findNavController().navigate(R.id.homeFragment)}
-        binding.cartClearAll.setOnClickListener() {viewmodel.deleteItemsAll()}
+        binding.cartBack.setOnClickListener {findNavController().navigate(R.id.homeFragment)}
+        binding.cartClearAll.setOnClickListener {viewmodel.deleteItemsAll()}
 
 
-        binding.cartCheckout.setOnClickListener() {
+        binding.cartCheckout.setOnClickListener {
             PopupDialog.getInstance(context)
                 .setStyle(Styles.ALERT)
                 .setHeading("On Implementation")

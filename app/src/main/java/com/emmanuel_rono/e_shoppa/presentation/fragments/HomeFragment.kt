@@ -1,4 +1,4 @@
-package com.emmanuel_rono.e_shoppa.Presentation.Fragments
+package com.emmanuel_rono.e_shoppa.presentation.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -13,8 +13,8 @@ import com.emmanuel_rono.e_shoppa.Data.AllProducts.ProductEntity
 import com.emmanuel_rono.e_shoppa.Data.Database.AppDatabase
 import com.emmanuel_rono.e_shoppa.Domain.APiClient
 import com.emmanuel_rono.e_shoppa.Domain.Repository.ProductRepository
-import com.emmanuel_rono.e_shoppa.Presentation.Adapters.ProductAdapter
-import com.emmanuel_rono.e_shoppa.Presentation.ViewModel.ProductViewModel
+import com.emmanuel_rono.e_shoppa.presentation.Adapters.ProductAdapter
+import com.emmanuel_rono.e_shoppa.presentation.viewModel.ProductViewModel
 import com.emmanuel_rono.e_shoppa.R
 import com.emmanuel_rono.e_shoppa.databinding.FragmentHomeBinding
 
@@ -53,8 +53,8 @@ class HomeFragment : Fragment() {
             theAdapter.notifyDataSetChanged()
         }
         viewModel.getProducts()
-        val ProfileSection=binding.homeProfile
-        ProfileSection.setOnClickListener()
+        val profileSection=binding.homeProfile
+        profileSection.setOnClickListener()
         {
             findNavController().navigate(R.id.profileFragment)
         }

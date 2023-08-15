@@ -5,7 +5,6 @@ import com.emmanuel_rono.e_shoppa.Data.AllProducts.Products
 import com.emmanuel_rono.e_shoppa.Data.AllProducts.profileBio
 import com.emmanuel_rono.e_shoppa.Data.Login.Login
 import com.emmanuel_rono.e_shoppa.Data.Login.LoginResponse
-import com.emmanuel_rono.e_shoppa.Utils.ProfileBioResult
 import retrofit2.Response
 import retrofit2.http.*
 
