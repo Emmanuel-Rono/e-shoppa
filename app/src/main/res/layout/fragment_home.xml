@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
 xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Presentation.Fragments.HomeFragment">
-
+    tools:context=".presentation.fragments.HomeFragment">
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
@@ -27,7 +25,7 @@ xmlns:tools="http://schemas.android.com/tools"
         android:layout_marginTop="24dp"
         android:fontFamily="sans-serif-black"
         android:text="EShoppa"
-        android:textColor="@color/green"
+        android:textColor="@color/teal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
@@ -39,7 +37,7 @@ xmlns:tools="http://schemas.android.com/tools"
         android:layout_height="42dp"
         android:layout_marginStart="24dp"
         android:scaleType="centerCrop"
-        android:src="@mipmap/ic_licon"
+        android:src="@mipmap/userprof"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView4" />
@@ -63,7 +61,7 @@ xmlns:tools="http://schemas.android.com/tools"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:fontFamily="sans-serif-black"
-        android:text="Shop with us Today"
+        android:text="Shop with us Today, Click Item To Add Cart"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,4 +1,4 @@
-package com.emmanuel_rono.e_shoppa.Presentation.Activities
+package com.emmanuel_rono.e_shoppa.presentation.Activities
 
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity

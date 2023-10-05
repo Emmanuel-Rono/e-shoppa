@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FragmentCart">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/FragmentCart"
-        android:name="com.emmanuel_rono.e_shoppa.Presentation.Activities.FragmentCart"
+        android:name="com.emmanuel_rono.e_shoppa.presentation.fragments.FragmentCart"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_cart">
 
@@ -17,10 +17,13 @@
         <action
             android:id="@+id/action_FragmentCart_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_FragmentCart_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentLogin"
-        android:name="com.emmanuel_rono.e_shoppa.Presentation.fragmentLogin"
+        android:name="com.emmanuel_rono.e_shoppa.presentation.fragmentLogin"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -29,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.emmanuel_rono.e_shoppa.Presentation.Fragments.HomeFragment"
+        android:name="com.emmanuel_rono.e_shoppa.presentation.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -38,5 +41,41 @@
         <action
             android:id="@+id/action_homeFragment_to_FragmentCart"
             app:destination="@id/FragmentCart" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment2"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_FragmentCart2"
+            app:destination="@id/FragmentCart" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileEdit"
+            app:destination="@id/profileEdit" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.emmanuel_rono.e_shoppa.presentation.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_fragmentLogin"
+            app:destination="@id/fragmentLogin" />
+        <action
+            android:id="@+id/action_profileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_FragmentCart"
+            app:destination="@id/FragmentCart" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileEdit"
+        android:name="com.emmanuel_rono.e_shoppa.presentation.fragments.ProfileEdit"
+        android:label="fragment_profile_edit"
+        tools:layout="@layout/fragment_profile_edit" >
+        <action
+            android:id="@+id/action_profileEdit_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>
