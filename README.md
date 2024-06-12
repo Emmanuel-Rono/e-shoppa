@@ -1,4 +1,4 @@
-# MyCrypto
+# Eshoppa
 An Ecommerce Application, consuming data from FakeStore Api.
 
 
