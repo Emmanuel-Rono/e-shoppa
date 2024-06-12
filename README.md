@@ -1,5 +1,5 @@
 # MyCrypto
-An application that helps you track several crypto coin prices and its daily moves
+An Ecommerce Application, consuming data from FakeStore Api.
 
 
 ## Screenshots
