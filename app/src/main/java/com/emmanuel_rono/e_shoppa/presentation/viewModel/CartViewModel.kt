@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 class CartViewModel(private var repository: cartRepository):ViewModel()
 {
     private var _cartItem= MutableLiveData<List<CartEntity>>()
-    private val cartItem:MutableLiveData<List<CartEntity>> get() =  _cartItem
+     val cartItem:MutableLiveData<List<CartEntity>> get() =  _cartItem
     init {
         getCartItem()
 

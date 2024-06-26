@@ -68,7 +68,7 @@ class FragmentCart : Fragment() {
             adapter = thecartItemAdapter
             layoutManager = GridLayoutManager(requireContext(), 1)
         }
-        viewmodel.CartItem.observe(viewLifecycleOwner) { products ->
+        viewmodel.cartItem.observe(viewLifecycleOwner) { products ->
             thecartItemAdapter.updateList(products)
         }
 

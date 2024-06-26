@@ -14,7 +14,7 @@ interface cartDao
     suspend fun getSelectedProduct(): List<CartEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-        suspend fun Insertproduct(product: com.emmanuel_rono.e_shoppa.Data.AllProducts.CartEntity)
+        suspend fun Insertproduct(product:CartEntity)
 
     @Query("Delete FROM CartProductTable" )
     suspend fun DeleteAll()
