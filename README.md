@@ -1,5 +1,5 @@
 # Eshoppa
-An Ecommerce Application, consuming data from FakeStore Api.
+An Ecommerce Application, consuming data from FakeStore Api
 
 
 ## Screenshots
