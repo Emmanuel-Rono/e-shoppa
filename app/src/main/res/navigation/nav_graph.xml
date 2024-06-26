@@ -53,6 +53,9 @@
         <action
             android:id="@+id/action_homeFragment_to_profileEdit"
             app:destination="@id/profileEdit" />
+        <action
+            android:id="@+id/action_homeFragment_to_productDetail2"
+            app:destination="@id/productDetail2" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -76,6 +79,15 @@
         tools:layout="@layout/fragment_profile_edit" >
         <action
             android:id="@+id/action_profileEdit_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetail2"
+        android:name="com.emmanuel_rono.e_shoppa.presentation.fragments.productDetail"
+        android:label="product_detail_screen"
+        tools:layout="@layout/product_detail_screen" >
+        <action
+            android:id="@+id/action_productDetail2_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

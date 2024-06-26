@@ -40,3 +40,6 @@ data class CartEntity(
     val image: String,
     var quantity: Int
 )
+
+
+//For Product Detail
